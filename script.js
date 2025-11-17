@@ -1,6 +1,6 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
 
-  const video = document.querySelector('.viewer');
+  const video = document.querySelector('.player__video');
   const toggle = document.querySelector('.toggle');
   const volumeSlider = document.querySelector('input[name="volume"]');
   const speedSlider = document.querySelector('input[name="playbackSpeed"]');
@@ -8,8 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const progress = document.querySelector('.progress');
   const progressBar = document.querySelector('.progress__filled');
 
-
-  // ---- PLAY / PAUSE ----
+  // PLAY / PAUSE
   function togglePlay() {
     if (video.paused) {
       video.play();
@@ -20,39 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ---- PROGRESS BAR UPDATE ----
+  // UPDATE PROGRESS BAR
   function handleProgress() {
     const percent = (video.currentTime / video.duration) * 100;
     progressBar.style.width = percent + "%";
   }
 
-  // ---- SCRUBBING ----
+  // SCRUB
   function scrub(e) {
     const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
     video.currentTime = scrubTime;
   }
 
-  // ---- VOLUME CONTROL ----
-  volumeSlider.addEventListener('input', () => {
+  // VOLUME
+  volumeSlider.addEventListener("input", () => {
     video.volume = volumeSlider.value;
   });
 
-  // ---- PLAYBACK SPEED CONTROL ----
-  speedSlider.addEventListener('input', () => {
+  // PLAYBACK SPEED
+  speedSlider.addEventListener("input", () => {
     video.playbackRate = speedSlider.value;
   });
 
-  // ---- SKIP BUTTONS ----
+  // SKIP BUTTONS (rewind + forward)
   skipButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener("click", () => {
       video.currentTime += parseFloat(btn.dataset.skip);
     });
   });
 
-  // ---- EVENT LISTENERS ----
-  toggle.addEventListener('click', togglePlay);
-  video.addEventListener('click', togglePlay);
-  video.addEventListener('timeupdate', handleProgress);
-  progress.addEventListener('click', scrub);
+  toggle.addEventListener("click", togglePlay);
+  video.addEventListener("click", togglePlay);
+  video.addEventListener("timeupdate", handleProgress);
+  progress.addEventListener("click", scrub);
 
 });

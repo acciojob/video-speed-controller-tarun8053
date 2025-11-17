@@ -2,33 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Video Player Controller</title>
+  <title>Video Speed Controller</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <div class="player">
-    <video class="viewer" src="https://www.w3schools.com/html/mov_bbb.mp4"></video>
+<div class="player">
 
-    <div class="player__controls">
+  <video 
+    class="player__video" 
+    src="https://www.w3schools.com/html/mov_bbb.mp4">
+  </video>
 
-      <div class="progress">
-        <div class="progress__filled"></div>
-      </div>
+  <div class="player__controls">
 
-      <button class="player__button toggle">►</button>
-
-      <input type="range" name="volume" min="0" max="1" step="0.01" value="1">
-
-      <input type="range" name="playbackSpeed" min="0.25" max="2" step="0.25" value="1">
-
-      <button data-skip="-10" class="player__button">« 10s</button>
-      <button data-skip="25" class="player__button">25s »</button>
-
+    <!-- Progress Bar -->
+    <div class="progress">
+      <div class="progress__filled"></div>
     </div>
-  </div>
 
-  <!-- Important -->
-  <script src="script.js" defer></script>
+    <!-- Play / Pause -->
+    <button class="player__button toggle">►</button>
+
+    <!-- Volume -->
+    <input type="range" name="volume" min="0" max="1" step="0.01" value="1">
+
+    <!-- Playback Speed -->
+    <input type="range" name="playbackSpeed" min="0.25" max="2" step="0.25" value="1">
+
+    <!-- Rewind 10s -->
+    <button class="player__button rewind" data-skip="-10">« 10s</button>
+
+    <!-- Forward 25s -->
+    <button class="player__button forward" data-skip="25">25s »</button>
+
+  </div>
+</div>
+
+<script src="script.js" defer></script>
+
 </body>
 </html>
